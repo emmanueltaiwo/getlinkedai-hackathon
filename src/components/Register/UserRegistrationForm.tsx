@@ -45,9 +45,10 @@ const RegistrationForm = () => {
       team_name: state.team_name,
       group_size: state.group_size,
       project_topic: state.project_topic,
-      category: state.category, // Use the selected category ID
+      category: state.category,
       privacy_poclicy_accepted: state.privacy_policy_accepted,
     };
+    console.log(JSON.stringify(formData));
 
     try {
       const response = await axios.post(
@@ -63,9 +64,10 @@ const RegistrationForm = () => {
       if (response.status === 200) {
         dispatch({ type: actionTypes.RESET_FORM });
         localStorage.setItem("isRegistrationComplete", "true");
-        // Handle success, e.g., show a success message to the user
+        console.log(JSON.stringify(formData));
       } else {
         console.error("Failed to submit the form");
+        console.log(JSON.stringify(formData));
       }
     } catch (error) {
       console.error("An error occurred:", error);

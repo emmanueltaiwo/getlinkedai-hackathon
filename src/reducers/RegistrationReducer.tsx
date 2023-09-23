@@ -17,7 +17,6 @@ export const actionTypes = {
 export const registrationReducer = (state: any, action: any) => {
   switch (action.type) {
     case actionTypes.SET_FIELD:
-      // Parse numeric fields as integers
       const value =
         action.field === "group_size" || action.field === "category"
           ? parseInt(action.value, 10)

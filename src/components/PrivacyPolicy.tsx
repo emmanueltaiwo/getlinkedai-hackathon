@@ -1,66 +1,12 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { PrivacyPolicyBackgroundGraphics } from "./PrivacyPolicyBackgroundGraphics";
 
 const PrivacyPolicy = () => {
   return (
     <>
-      <Image
-        src="/assets/Images/purple-grad-10.png"
-        className="absolute mt-[15%]"
-        width={1037}
-        height={948}
-        alt="purple-grad-10"
-      />
-      <Image
-        src="/assets/Images/pink-star.png"
-        className="absolute w-[20px] md:w-[30px] md:mr-0 right-0 mr-[3rem] mt-[15rem]  md:mt-[55%] md:ml-[5%]"
-        width={30}
-        height={36}
-        alt="pink-star"
-      />
-      <Image
-        src="/assets/Images/gray-star.png"
-        className="absolute w-[10px] md:w-[26px] right-0 mr-[5rem] mt-[3rem] md:mt-[7%] md:ml-[35%]"
-        width={26}
-        height={32}
-        alt="pink-star"
-      />
-      <Image
-        src="/assets/Images/pink-star.png"
-        className="absolute w-[20px] mt-[60rem] ml-7 md:w-[23px] md:mt-[15%] md:ml-[50%]"
-        width={23}
-        height={28}
-        alt="pink-star"
-      />
-      <Image
-        src="/assets/Images/bright-star.png"
-        className="absolute w-[10px] mt-[64rem] ml-[15.5rem] md:w-[15px] md:mt-[15%] md:ml-[83%]"
-        width={15}
-        height={18}
-        alt="pink-star"
-      />
-      <Image
-        src="/assets/Images/gray-star.png"
-        className="absolute w-[10px] md:w-[26px] ml-[20rem] mt-[75rem] md:mt-[55%] md:ml-[93%]"
-        width={26}
-        height={32}
-        alt="pink-star"
-      />
-      <Image
-        src="/assets/Images/bright-star.png"
-        className="absolute w-[10px] mt-[75rem] ml-7 md:w-[15px] md:mt-[52%] md:ml-[62%]"
-        width={15}
-        height={18}
-        alt="pink-star"
-      />
-      {/*   <Image
-        src="/assets/Images/pink-star.png"
-        className="absolute w-[10px] md:w-[15px] mt-[47%] ml-[67%]"
-        width={15}
-        height={18}
-        alt="pink-star"
-      /> */}
+      <PrivacyPolicyBackgroundGraphics />
 
       <section className="w-full flex flex-col lg:flex-row justify-between gap-5 items-center h-full py-20 md:py-32 border-b-[0.2px] border-gray-600">
         <div className="mg:ml-[25px] xl:ml-[50px] flex flex-col gap-3 sm:gap-5">
@@ -131,13 +77,13 @@ const PrivacyPolicy = () => {
           </div>
         </div>
 
-        <div className="xl:w-[559px]  mt-32 md:h-[749px] mr-[90px]">
+        <div className="xl:w-[559px] flex items-center  mt-32 md:h-[749px] mr-[90px]">
           <Image
             src="/assets/Images/secure.png"
             width={530}
             height={648}
             alt="secure image"
-            className="absolute w-[249px] sm:w-[530px] lg:mr-[90px] mt-[50rem] md:mt-[40rem] lg:mt-[-10rem] mb-[45vh] lg:right-0 pointer-events-none select-none"
+            className="absolute w-[249px] sm:w-[530px] lg:mr-[90px] mt-[10rem] md:mt-[-5rem] ml-14 lg:mt-[-10rem] mb-[45vh] lg:right-0 pointer-events-none select-none"
           />
           <Image
             src="/assets/Images/privacy.png"

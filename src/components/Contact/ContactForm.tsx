@@ -9,7 +9,7 @@ const ContactForm = () => {
     message: "",
   });
 
-  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+  const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -17,8 +17,10 @@ const ContactForm = () => {
     });
   };
 
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
+
+    console.log(JSON.stringify(formData));
 
     try {
       const response = await axios.post(
@@ -32,7 +34,6 @@ const ContactForm = () => {
       );
 
       if (response.status === 200) {
-        // Handle success, e.g., show a success message to the user
         console.log("Form submitted successfully");
       } else {
         console.error("Failed to submit the form");
