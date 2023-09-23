@@ -15,7 +15,7 @@ const RegistrationForm = () => {
     category: 0,
     privacy_policy_accepted: false,
   });
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -88,6 +88,7 @@ const RegistrationForm = () => {
         setIsSuccess(false);
       }
     } catch (error) {
+      setIsLoading(false);
       console.log("Catch some errors", error);
     }
   };
@@ -239,6 +240,7 @@ const RegistrationForm = () => {
           background: "linear-gradient(to right, #FE34B9, #D434FE, #903AFF)",
         }}
         type="submit"
+        disabled={isLoading}
       >
         Submit
       </button>
