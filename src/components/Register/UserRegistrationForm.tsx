@@ -1,15 +1,29 @@
-import React, { useReducer, useState, useEffect } from "react";
-import {
-  registrationReducer,
-  initialState,
-  actionTypes,
-} from "../../reducers/RegistrationReducer";
+import Image from "next/image";
+import React, { useState, useEffect } from "react";
 import RegistrationConfirmationModal from "./RegistrationConfirmationModal";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const RegistrationForm = () => {
   const [categories, setCategories] = useState([]);
-  const [state, dispatch] = useReducer(registrationReducer, initialState);
+  const [formData, setFormData] = useState({
+    email: "",
+    phone_number: "",
+    team_name: "",
+    group_size: 0,
+    project_topic: "",
+    category: 0,
+    privacy_policy_accepted: false,
+  });
+  const [showModal, setShowModal] = useState(true);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
   useEffect(() => {
     async function fetchCategories() {
@@ -39,53 +53,63 @@ const RegistrationForm = () => {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    const formData = {
-      email: state.email,
-      phone_number: state.phone_number,
-      team_name: state.team_name,
-      group_size: state.group_size,
-      project_topic: state.project_topic,
-      category: state.category,
-      privacy_poclicy_accepted: state.privacy_policy_accepted,
-    };
-    console.log(JSON.stringify(formData));
+    const baseUrl = "https://backend.getlinked.ai";
+    const registrationEndpoint = `${baseUrl}/hackathon/registration`;
 
     try {
-      const response = await axios.post(
-        "https://backend.getlinked.ai/hackathon/registration",
-        JSON.stringify(formData),
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      setErrorMessage("");
+      setIsLoading(true);
+      console.log(JSON.stringify(formData));
 
-      if (response.status === 200) {
-        dispatch({ type: actionTypes.RESET_FORM });
-        localStorage.setItem("isRegistrationComplete", "true");
-        console.log(JSON.stringify(formData));
+      const response = await fetch(registrationEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.status === 201) {
+        setIsLoading(false);
+        setShowModal(true);
+        setFormData({
+          email: "",
+          phone_number: "",
+          team_name: "",
+          group_size: 0,
+          project_topic: "",
+          category: 0,
+          privacy_policy_accepted: false,
+        });
+        setIsSuccess(true);
       } else {
-        console.error("Failed to submit the form");
-        console.log(JSON.stringify(formData));
+        setIsLoading(false);
+        setErrorMessage("Registration Failed, Try again");
+        setIsSuccess(false);
       }
     } catch (error) {
-      console.error("An error occurred:", error);
+      console.log("Catch some errors", error);
     }
   };
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
-    dispatch({ type: actionTypes.SET_FIELD, field: name, value });
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleAgreementToggle = () => {
-    dispatch({ type: actionTypes.TOGGLE_AGREEMENT });
+    setFormData({
+      ...formData,
+      privacy_policy_accepted: !formData.privacy_policy_accepted,
+    });
   };
 
   return (
     <form className="flex mt-3 flex-col gap-5" onSubmit={handleSubmit}>
-      <RegistrationConfirmationModal />
+      {showModal && (
+        <RegistrationConfirmationModal handleCloseModal={handleCloseModal} />
+      )}
+
       <div className="flex flex-col lg:flex-row gap-3 justify-between w-full">
         {/* Team Name */}
         <div className="flex flex-col gap-2">
@@ -93,10 +117,11 @@ const RegistrationForm = () => {
           <input
             type="text"
             name="team_name"
-            value={state.team_name}
+            value={formData.team_name}
             onChange={handleChange}
             className="w-full lg:w-[215px] xl:w-[263px] h-[47px] bg-transparent border-2 border-white rounded-[4px] px-4 text-white text-[14px] placeholder:text-gray-600 outline-none"
             placeholder="Enter the name of your group"
+            required
           />
         </div>
 
@@ -106,10 +131,11 @@ const RegistrationForm = () => {
           <input
             type="number"
             name="phone_number"
-            value={state.phone_number}
+            value={formData.phone_number}
             onChange={handleChange}
             className="w-full lg:w-[215px] xl:w-[263px] h-[47px] bg-transparent border-2 border-white rounded-[4px] px-4 text-white text-[14px] placeholder:text-gray-600 outline-none"
             placeholder="Enter your phone number"
+            required
           />
         </div>
       </div>
@@ -121,10 +147,11 @@ const RegistrationForm = () => {
           <input
             type="email"
             name="email"
-            value={state.email}
+            value={formData.email}
             onChange={handleChange}
             className="w-full lg:w-[215px] xl:w-[263px] h-[47px] bg-transparent border-2 border-white rounded-[4px] px-4 text-white text-[14px] placeholder:text-gray-600 outline-none"
             placeholder="Enter your email address"
+            required
           />
         </div>
 
@@ -134,10 +161,11 @@ const RegistrationForm = () => {
           <input
             type="text"
             name="project_topic"
-            value={state.project_topic}
+            value={formData.project_topic}
             onChange={handleChange}
             className="w-full lg:w-[215px]  xl:w-[263px] h-[47px] bg-transparent border-2 border-white rounded-[4px] px-4 text-white text-[14px] placeholder:text-gray-600 outline-none"
             placeholder="What is your group project topic"
+            required
           />
         </div>
       </div>
@@ -148,9 +176,10 @@ const RegistrationForm = () => {
           <label className="text-white text-[14px]">Category</label>
           <select
             name="category"
-            value={state.category}
+            value={formData.category}
             onChange={handleChange}
             id="selectCategory"
+            required
             className="w-[180px] md:w-full sm:w-[300px] lg:w-[215px] xl:w-[263px] h-[47px] bg-transparent border-2 border-white rounded-[4px] px-4 text-white text-[14px] placeholder:text-gray-600 outline-none"
           >
             <option value="select">Select your category</option>
@@ -167,7 +196,7 @@ const RegistrationForm = () => {
           <label className="text-white text-[14px]">Group Size</label>
           <select
             name="group_size"
-            value={state.group_size}
+            value={formData.group_size}
             onChange={handleChange}
             id="selectGroupSize"
             className="w-[100px] md:w-full sm:w-[200px] lg:w-[215px] xl:w-[263px] h-[47px] bg-transparent border-2 border-white rounded-[4px] px-4 text-white text-[14px] placeholder:text-gray-600 outline-none"
@@ -195,7 +224,7 @@ const RegistrationForm = () => {
         <input
           type="checkbox"
           name="privacy_policy_accepted"
-          checked={state.privacy_policy_accepted}
+          checked={formData.privacy_policy_accepted}
           onChange={handleAgreementToggle}
           className="h-4 w-4 border-2 border-white rounded-sm text-[#150e2b69] appearance-none checked:bg-[#7a5ae6d2] checked:text-[#150e2b69]"
         />
@@ -213,6 +242,16 @@ const RegistrationForm = () => {
       >
         Submit
       </button>
+      {isLoading && (
+        <p className="text-white text-[15px] font-medium text-center pb-1">
+          Loading
+        </p>
+      )}
+      {!isSuccess && (
+        <p className="text-red-600 text-[15px] font-bold text-center pb-2">
+          {errorMessage}
+        </p>
+      )}
     </form>
   );
 };

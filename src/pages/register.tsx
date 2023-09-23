@@ -10,7 +10,7 @@ const Register = () => {
       <Header pageName="register" />
       <RegisterPageBackgroundArt />
 
-      <main className="w-full h-full pb-20 md:pb-0 lg:h-[82vh] flex flex-col md:flex-col-reverse lg:flex-row justify-between items-center">
+      <main className="w-full h-full pb-20 md:pb-0 py-10 flex flex-col md:flex-col-reverse lg:flex-row justify-between items-center">
         <h1 className="mt-10 w-[90%] text-[15px] sm:text-[24px] md:hidden font-semibold text-[#D434FE]">
           Register
         </h1>

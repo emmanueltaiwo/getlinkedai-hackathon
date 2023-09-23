@@ -58,7 +58,31 @@ const Faq = () => {
           ))}
         </ul>
       </div>
-      <div className="lg:mr-[50px] mt-44 xl:mr-[100px] z-20 lg:mt-24">
+      <div className="lg:mr-[50px] flex items-center flex-col mt-20 xl:mr-[100px] z-20 lg:mt-24">
+        <div className="flex lg:gap-20 gap-10">
+          <Image
+            src="/assets/Images/question-mark-2.png"
+            width={50}
+            height={71}
+            alt="purple-grad-4"
+            className="pointer-events-none mt-12 select-none"
+          />
+          <Image
+            src="/assets/Images/question-mark-1.png"
+            width={60}
+            height={71}
+            alt="purple-grad-4"
+            className=" pointer-events-none select-none"
+          />
+          <Image
+            src="/assets/Images/question-mark-2.png"
+            width={50}
+            height={71}
+            alt="purple-grad-4"
+            className="pointer-events-none mt-12 select-none"
+          />
+        </div>
+
         <Image
           src="/assets/Images/faq-hero.png"
           width={600}

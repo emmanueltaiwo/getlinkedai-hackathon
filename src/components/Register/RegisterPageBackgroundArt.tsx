@@ -9,7 +9,7 @@ const RegisterPageBackgroundArt = () => {
         width={500}
         height={836}
         alt="purple-grad-8"
-        className="absolute h-full z-10 hidden lg:inline right-0 bottom-0 pointer-events-none select-none"
+        className="absolute h-full z-10 hidden lg:inline right-0  mt-auto pointer-events-none select-none"
       />
       <Image
         src="/assets/Images/purple-grad-7.png"

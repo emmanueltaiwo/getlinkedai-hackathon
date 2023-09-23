@@ -44,7 +44,7 @@ const HomePageBackgroundGraphics = () => {
         width={53}
         height={73}
         alt="creative"
-        className="absolute md:w-[3%] w-[18px] sm:w-[5%] sm:mt-[11.5rem] right-0 mt-[10rem] sm:mr-[23%] mr-[4.5rem] md:left-0 lg:w-[53px] lg:ml-[36em] md:ml-[68vw] md:mt-[10em] lg:mt-[12.5em] xl:ml-[42em] top-0 xl:mt-[11.5em] pointer-events-none select-none"
+        className="absolute md:w-[3%] w-[18px] sm:w-[5%] sm:mt-[11.5rem] right-0 mt-[10rem] sm:mr-[23%] mr-20 md:left-0 lg:w-[53px] lg:ml-[36em] md:ml-[68vw] md:mt-[10em] lg:mt-[12.5em] xl:ml-[42em] top-0 xl:mt-[11.5em] pointer-events-none select-none"
       />
 
       <h2 className="absolute hidden md:inline mt-5 md:right-0 md:mr-14 text-white md:text-[20px] lg:text-[25px] xl:text-[30px] font-bold italic">
@@ -55,9 +55,9 @@ const HomePageBackgroundGraphics = () => {
         width={220}
         height={11.04}
         alt="curve"
-        className="absolute mt-[3em] sm:mt-[6.5vw] md:mt-0 inline w-[7rem] sm:w-[9rem] md:w-[10rem] lg:w-[220px] right-0 sm:mr-[10em] mr-5 md:mr-14 md:top-[160px] lg:top-[165px] pointer-events-none select-none"
+        className="absolute mt-[3em] sm:mt-[6.5vw] md:mt-0 inline w-[7rem] sm:w-[9rem] md:w-[10rem] lg:w-[220px] right-0 sm:mr-14 mr-5 md:mr-14 md:top-[160px] lg:top-[165px] pointer-events-none select-none"
       />
-      <h2 className="md:hidden mt-5 md:right-0 md:mr-14 text-center text-white text-[16px] md:text-[20px] lg:text-[25px] xl:text-[30px] font-bold italic">
+      <h2 className="md:hidden absolute mt-5 right-0 mr-5 sm:mr-14 text-white text-[16px] md:text-[20px] lg:text-[25px] xl:text-[30px] font-bold italic">
         Igniting a Revolution in HR Innovation
       </h2>
     </>

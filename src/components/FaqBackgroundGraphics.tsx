@@ -11,27 +11,7 @@ export const FaqBackgroundGraphics = () => {
         alt="purple-grad-4"
         className="absolute right-0 sm:top-[2800px] top-[3000px] lg:top-[2250px] pointer-events-none select-none"
       />
-      <Image
-        src="/assets/Images/question-mark-1.png"
-        width={60}
-        height={71}
-        alt="purple-grad-4"
-        className="absolute lg:left-[750px] xl:left-[920px] mt-[750px] lg:m-0 sm:mt-[650px] lg:top-[2820px] xl:m-0 xl:top-[2800px] pointer-events-none select-none"
-      />
-      <Image
-        src="/assets/Images/question-mark-2.png"
-        width={50}
-        height={71}
-        alt="purple-grad-4"
-        className="absolute lg:left-[650px] ml-[200px] mt-[800px] lg:m-0 sm:mt-[700px] xl:left-[780px] xl:m-0 lg:top-[2890px] xl:top-[2870px] pointer-events-none select-none"
-      />
-      <Image
-        src="/assets/Images/question-mark-2.png"
-        width={50}
-        height={71}
-        alt="purple-grad-4"
-        className="absolute lg:left-[900px] mr-[200px] mt-[800px] lg:m-0 sm:mt-[700px] xl:left-[1080px] lg:top-[2870px] xl:m-0 xl:top-[2850px] pointer-events-none select-none"
-      />
+      
       <Image
         src="/assets/Images/pink-star.png"
         width={30}

@@ -13,7 +13,7 @@ export default function Document() {
       </Head>
       <body>
         <Main />
-        <div id="registration-confirmation-portal"></div>
+        <div id="registration-confirmation-portal" />
         <NextScript />
       </body>
     </Html>
