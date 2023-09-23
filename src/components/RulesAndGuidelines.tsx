@@ -49,7 +49,7 @@ const RulesAndGuidelines = () => {
           a design maverick, or a concept wizard, you&apos;ll have the chance to
           transform your ideas into reality. Solving real-world problems,
           pushing the boundaries of technology, and creating solutions that can
-          change the world, that's what we're all about!
+          change the world, that&apos;s what we&apos;re all about!
         </p>
       </div>
       <div className="xl:mr-[38px] lg:mr-[19px] z-20 mx-auto">

@@ -30,7 +30,7 @@ const HeroSection = () => {
           <h1 className="text-[32px] w-[300px] sm:text-[60px] md:mx-auto font-black text-white text-center lg:text-left sm:w-[500px]">
             getlinked Tech
           </h1>
-          <div className="w-[320px] items-center justify-around flex gap-0">
+          <div className="md:w-full sm:w-full w-[320px] items-center justify-around flex gap-0">
             <h1 className="text-[32px] w-[300px] sm:text-[60px] md:mx-auto font-black text-white text-center lg:text-left sm:w-[500px]">
               Hackathon <span className="text-[#D434FE]">1.0</span>{" "}
             </h1>
@@ -39,14 +39,14 @@ const HeroSection = () => {
               width={86}
               height={86}
               alt="chain-icon"
-              className="w-[32px] md:w-[86px] pointer-events-none h-fit select-none"
+              className="w-[32px] sm:w-[86px] md:w-[86px] pointer-events-none h-fit select-none"
             />
             <Image
               src="/assets/Images/fire.png"
               width={58}
               height={58}
               alt="fire-icon"
-              className="w-[22px] md:w-[58px] pointer-events-none h-fit mr-5  select-none"
+              className="w-[22px] sm:w-[58px] md:w-[58px] pointer-events-none h-fit mr-5  select-none"
             />
           </div>
         </div>

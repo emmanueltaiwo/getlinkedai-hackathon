@@ -9,10 +9,10 @@ const MobileHeader = () => {
     <div className="md:hidden flex">
       <Image
         src="/assets/Images/mobile-menu.png"
-        width={19}
-        height={14}
+        width={100}
+        height={100}
         alt="Mobile menu"
-        className="mr-5"
+        className="w-[19px] mr-5"
         onClick={() => setMenuIsOpen(true)}
       />
 
