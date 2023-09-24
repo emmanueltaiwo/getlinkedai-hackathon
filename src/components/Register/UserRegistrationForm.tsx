@@ -7,13 +7,13 @@ import { useRouter } from "next/router";
 const RegistrationForm = () => {
   const [categories, setCategories] = useState([]);
   const [formData, setFormData] = useState({
-    email: "",
-    phone_number: "",
-    team_name: "",
-    group_size: 0,
-    project_topic: "",
-    category: 0,
-    privacy_policy_accepted: false,
+email: "",
+        phone_number: "",
+        category: "",
+        group_size: "",
+        team_name: "",
+        project_topic: "",
+        privacy_poclicy_accepted:true,    
   });
   const [showModal, setShowModal] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -53,24 +53,20 @@ const RegistrationForm = () => {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    const baseUrl = "https://backend.getlinked.ai";
-    const registrationEndpoint = `${baseUrl}/hackathon/registration`;
 
-    try {
-      setErrorMessage("");
-      setIsLoading(true);
-      console.log(JSON.stringify(formData));
+const fetchData = await fetch('https://backend.getlinked.ai/hackathon/registration', {
+                   method: "POST",
+                headers:{
+                    "content-type":"application/json"
+                },
+                body:JSON.stringify(formData)
+            })
+            const response = await fetchData.json()
 
-      const response = await fetch(registrationEndpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+        console.log(response);
 
-      if (response.status === 201) {
-        setIsLoading(false);
+        if (response.id) {
+setIsLoading(false);
         setShowModal(true);
         setFormData({
           email: "",
@@ -82,15 +78,14 @@ const RegistrationForm = () => {
           privacy_policy_accepted: false,
         });
         setIsSuccess(true);
-      } else {
-        setIsLoading(false);
+         
+   
+        } else {
+          setIsLoading(false);
         setErrorMessage("Registration Failed, Try again");
         setIsSuccess(false);
-      }
-    } catch (error) {
-      setIsLoading(false);
-      console.log("Catch some errors", error);
-    }
+        }
+    
   };
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
@@ -101,7 +96,7 @@ const RegistrationForm = () => {
   const handleAgreementToggle = () => {
     setFormData({
       ...formData,
-      privacy_policy_accepted: !formData.privacy_policy_accepted,
+      privacy_poclicy_accepted: !formData.privacy_poclicy_accepted,
     });
   };
 
@@ -130,7 +125,7 @@ const RegistrationForm = () => {
         <div className="flex flex-col gap-2">
           <label className="text-white text-[14px]">Phone</label>
           <input
-            type="number"
+            type="text"
             name="phone_number"
             value={formData.phone_number}
             onChange={handleChange}
@@ -224,7 +219,7 @@ const RegistrationForm = () => {
       <div className="flex gap-2 items-center">
         <input
           type="checkbox"
-          name="privacy_policy_accepted"
+          name="privacy_poclicy_accepted"
           checked={formData.privacy_policy_accepted}
           onChange={handleAgreementToggle}
           className="h-4 w-4 border-2 border-white rounded-sm text-[#150e2b69] appearance-none checked:bg-[#7a5ae6d2] checked:text-[#150e2b69]"
