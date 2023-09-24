@@ -27,15 +27,15 @@ const HeroSection = () => {
       className="w-full mt-14 lg:mt-0 flex flex-col gap-10 lg:gap-0 lg:flex-row justify-between items-center lg:h-[85vh] border-b-[0.2px] border-gray-600"
       initial="hidden"
       animate="visible"
-      variants={containerVariants} 
+      variants={containerVariants}
     >
-       <motion.div
+      <motion.div
         className="w-full md:w-fit flex z-20 flex-col gap-5 justify-center md:justify-normal items-center md:items-start md:text-start lg:ml-[100px] xl:ml-[128px] mt-[5%]"
-        variants={textVariants} 
+        variants={textVariants}
       >
-        <h1 className="hidden text-[32px] w-[300px] sm:text-[60px] md:mx-auto lg:mx-0 lg:text-[70px] xl:text-[80px] font-black text-white text-center lg:text-left sm:w-[500px] lg:w-[600px] xl:w-[722px] lg:flex items-end lg:leading-[90px] xl:leading-[95px]">
+        <h1 className="font-unica hidden text-[32px] w-[300px] sm:text-[60px] md:mx-auto lg:mx-0 lg:text-[70px] xl:text-[80px] font-black text-white text-center lg:text-left sm:w-[500px] lg:w-[600px] xl:w-[722px] lg:flex items-end lg:leading-[90px] xl:leading-[95px]">
           getlinked Tech Hackathon{" "}
-          <span className="absolute lg:ml-[26rem] xl:ml-[30rem] text-[#D434FE] lg:flex items-center">
+          <span className="absolute lg:ml-[24.5rem] xl:ml-[28rem] text-[#D434FE] lg:flex items-center">
             1.0{" "}
             <Image
               src="/assets/Images/chain.png"
@@ -53,7 +53,7 @@ const HeroSection = () => {
             />
           </span>{" "}
         </h1>
-        <div className="flex lg:hidden flex-col items-center mx-auto">
+        <div className="font-unica flex lg:hidden flex-col items-center mx-auto">
           <h1 className="text-[32px] w-[300px] sm:text-[60px] md:mx-auto font-black text-white text-center lg:text-left sm:w-[500px]">
             getlinked Tech
           </h1>

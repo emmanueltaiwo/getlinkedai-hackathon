@@ -14,3 +14,14 @@ body {
   -webkit-background-clip: text;
 }
 
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/assets/fonts/clash-display.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Apply the font to a specific class or element */
+.font-unica {
+  font-family: 'Clash Display', sans-serif;
+}

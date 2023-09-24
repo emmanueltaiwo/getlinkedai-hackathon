@@ -44,7 +44,7 @@ const HomePageBackgroundGraphics = () => {
         width={53}
         height={73}
         alt="creative"
-        className="absolute md:w-[3%] w-[18px] sm:w-[5%] sm:mt-[11.5rem] right-0 mt-[10rem] sm:mr-[23%] mr-20 md:left-0 lg:w-[53px] lg:ml-[36em] md:ml-[68vw] md:mt-[10em] lg:mt-[12.5em] xl:ml-[42em] top-0 xl:mt-[11.5em] pointer-events-none select-none"
+        className="absolute md:w-[3%] w-[18px] sm:w-[5%] sm:mt-[11.5rem] right-0 mt-[10rem] sm:mr-[23%] mr-20 md:left-0 lg:w-[53px] lg:ml-[36em] md:ml-[68vw] md:mt-[10em] lg:mt-[12.5em] xl:ml-[40em] top-0 xl:mt-[11.5em] pointer-events-none select-none"
       />
 
       <h2 className="absolute hidden md:inline mt-5 md:right-0 md:mr-14 text-white md:text-[20px] lg:text-[25px] xl:text-[30px] font-bold italic">
