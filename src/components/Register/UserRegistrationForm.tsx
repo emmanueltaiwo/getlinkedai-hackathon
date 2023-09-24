@@ -74,7 +74,7 @@ setIsLoading(false);
           team_name: "",
           group_size: "",
           project_topic: "",
-          category: 0,
+          category: "",
           privacy_policy_accepted: false,
         });
         setIsSuccess(true);
