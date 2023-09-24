@@ -42,7 +42,7 @@ const JudgingCriteria = () => {
       animate={controls}
       variants={containerVariants}
       ref={ref}
-      className="w-full flex flex-col lg:flex-row justify-between items-center h-full py-10 xl:h-screen border-b-[0.2px] border-gray-600"
+      className="w-full flex flex-col lg:flex-row justify-between items-center h-full py-10 border-b-[0.2px] border-gray-600"
     >
       <Image
         src="/assets/Images/purple-grad-3.png"

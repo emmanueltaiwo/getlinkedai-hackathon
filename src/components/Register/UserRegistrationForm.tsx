@@ -53,7 +53,7 @@ const RegistrationForm = () => {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setIsLoading(true);
-    setErrorMessage("")
+    setErrorMessage("");
 
     const fetchData = await fetch(
       "https://backend.getlinked.ai/hackathon/registration",

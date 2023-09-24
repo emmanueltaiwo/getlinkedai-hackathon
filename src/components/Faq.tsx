@@ -37,17 +37,12 @@ const Faq = () => {
     },
   };
 
-  const [faqIsOpen, setFaqIsOpen] = useState(false);
-  const [faqContent, setFaqContent] = useState("");
-  const [selectedId, setSelectedId] = useState(0);
+  const [selectedId, setSelectedId] = useState(null);
 
-  const toggleFaq = (id: number) => {
-    setFaqIsOpen(!faqIsOpen);
-    setSelectedId(id);
-    const getFaqData = faqData.filter((data) => data.id === id);
-    const getFaqContent = getFaqData.map((data) => data.content).toString();
-    setFaqContent(getFaqContent);
+  const toggleFaq = (id: any) => {
+    setSelectedId(selectedId === id ? null : id); // Toggle FAQ open/close
   };
+
   return (
     <motion.section
       initial="hidden"
@@ -87,13 +82,21 @@ const Faq = () => {
                   className="pointer-events-none select-none"
                 />
               </div>
-              <div>
-                {data.id === selectedId && faqIsOpen && (
+              <motion.div
+                initial={false}
+                animate={
+                  selectedId === data.id
+                    ? { height: "auto", opacity: 1 }
+                    : { height: 0, opacity: 0 }
+                }
+                transition={{ duration: 0.3 }}
+              >
+                {data.id === selectedId && (
                   <p className="text-[12px] md:text-[13px] font-bold">
-                    {faqContent}
+                    {data.content}
                   </p>
                 )}
-              </div>
+              </motion.div>
             </li>
           ))}
         </ul>

@@ -42,7 +42,7 @@ const Introduction = () => {
       variants={containerVariants}
       ref={ref} 
       id="overview"
-      className="w-full flex flex-col lg:flex-row mt-7 md:mt-0 justify-between items-center h-full py-10 lg:h-[75vh] border-b-[0.2px] border-gray-600 gap-8"
+      className="w-full flex flex-col lg:flex-row mt-7 md:mt-0 justify-between items-center h-full py-10 border-b-[0.2px] border-gray-600 gap-8"
     >
       <Image
         src="/assets/Images/pink-star.png"

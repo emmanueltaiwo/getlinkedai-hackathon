@@ -40,7 +40,7 @@ const RulesAndGuidelines = () => {
       animate={controls}
       variants={containerVariants}
       ref={ref}
-      className="w-full flex flex-col-reverse lg:flex-row justify-between items-center h-full py-10 lg:h-[75vh] border-b-[0.2px] border-gray-600"
+      className="w-full flex flex-col-reverse lg:flex-row justify-between items-center h-full py-10 lg:py-5 border-b-[0.2px] border-gray-600"
     >
       <Image
         src="/assets/Images/purple-grad-2.png"

@@ -1,7 +1,6 @@
 import Layout from "@/components/Layout";
-import React, { Fragment } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import React from "react";
+import Head from "next/head"
 import PrivacyPolicy from "@/components/PrivacyPolicy";
 import PartnersAndSponsors from "@/components/PartnersAndSponsors";
 import PrizesAndRewards from "@/components/PrizesAndRewards";
@@ -16,6 +15,9 @@ import HeroSection from "@/components/HeroSection";
 export default function Home() {
   return (
     <main className="w-full">
+      <Head>
+        <title>getLinkedai Hackathon - Emmanuel Build</title>
+      </Head>
       <Layout>
         <HomePageBackgroundGraphics />
 

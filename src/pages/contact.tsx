@@ -5,11 +5,15 @@ import { useRouter } from "next/router";
 import ContactInformation from "@/components/Contact/ContactInformtion";
 import ContactFormPanel from "@/components/Contact/ContactFormPanel";
 import ContactPageBackgroundArt from "@/components/Contact/ContactPageBackgroundArt";
+import Head from "next/head"
 
 const Contact = () => {
   const router = useRouter();
   return (
     <>
+      <Head>
+        <title>getLinkedai Hackathon - Contact</title>
+      </Head>
       <Header pageName="contact" />
       <ContactPageBackgroundArt />
       <main className="w-full h-[86.5vh] my-auto items-center flex flex-col md:flex-row gap-5 md:justify-between">

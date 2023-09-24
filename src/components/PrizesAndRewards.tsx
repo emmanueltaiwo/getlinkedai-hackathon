@@ -48,7 +48,7 @@ const PrizesAndRewards = () => {
         width={25}
         height={36}
         alt="bright-star"
-        className="absolute right-0 mr-5 mt-[500px] md:right-0 md:mr-[200px] w-[10px] md:w-[20px] md:mt-[550px] lg:m-0 lg:left-[700px] lg:top-[5330px] xl:top-[5330px] pointer-events-none select-none"
+        className="absolute right-0 mr-5 mt-[500px] md:right-0 md:mr-[200px] w-[10px] md:w-[20px] md:mt-[550px] lg:m-0 lg:left-[600px] lg:top-[5330px] xl:top-[5330px] pointer-events-none select-none"
       />
       <Image
         src="/assets/Images/bright-star.png"

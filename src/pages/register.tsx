@@ -3,10 +3,14 @@ import Header from "@/components/Layout/Header";
 import RegisterPageBackgroundArt from "@/components/Register/RegisterPageBackgroundArt";
 import RegistrationFormPanel from "@/components/Register/RegistrationFormPanel";
 import Image from "next/image";
+import Head from "next/head";
 
 const Register = () => {
   return (
     <Fragment>
+      <Head>
+        <title>getLinkedai Hackathon - Register</title>
+      </Head>
       <Header pageName="register" />
       <RegisterPageBackgroundArt />
 
