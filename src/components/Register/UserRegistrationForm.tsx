@@ -220,7 +220,7 @@ setIsLoading(false);
         <input
           type="checkbox"
           name="privacy_poclicy_accepted"
-          checked={formData.privacy_policy_accepted}
+          checked={formData.privacy_poclicy_accepted}
           onChange={handleAgreementToggle}
           className="h-4 w-4 border-2 border-white rounded-sm text-[#150e2b69] appearance-none checked:bg-[#7a5ae6d2] checked:text-[#150e2b69]"
         />
