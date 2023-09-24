@@ -20,7 +20,7 @@ const Header = (props: LayoutProps) => {
     >
       <Link href="/" className="xl:ml-[128px] lg:ml-[100px] md:ml-[50px] ml-5">
         <Image
-          src="/assets/Images/getlinked.png"
+          src="/assets/Images/getlinked.svg"
           width={171}
           height={44}
           alt="getlinked logo"

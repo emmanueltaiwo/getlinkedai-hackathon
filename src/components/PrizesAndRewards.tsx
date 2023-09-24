@@ -54,7 +54,7 @@ const PrizesAndRewards = () => {
         </p>
         <div className="md:ml-[106px] mt-5 md:mt-0 md:w-[548px] opacity-100">
           <Image
-            src="/assets/Images/trophy.png"
+            src="/assets/Images/trophy.svg"
             width={548}
             height={482}
             alt="trophy image"
@@ -70,7 +70,7 @@ const PrizesAndRewards = () => {
           </p>
 
           <Image
-            src="/assets/Images/rewards.png"
+            src="/assets/Images/rewards.svg"
             width={692}
             height={494}
             alt="rewards image"

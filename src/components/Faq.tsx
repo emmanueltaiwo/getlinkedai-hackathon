@@ -40,7 +40,7 @@ const Faq = () => {
               <div className="w-full flex justify-between items-center">
                 {data.title}
                 <Image
-                  src="/assets/Images/add.png"
+                  src="/assets/Images/add.svg"
                   width={12}
                   height={28}
                   alt="add"
@@ -84,7 +84,7 @@ const Faq = () => {
         </div>
 
         <Image
-          src="/assets/Images/faq-hero.png"
+          src="/assets/Images/faq-hero.svg"
           width={600}
           height={741}
           alt="faq-hero"

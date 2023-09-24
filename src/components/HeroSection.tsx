@@ -1,11 +1,38 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const HeroSection = () => {
+  const containerVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { delay: 0.2, duration: 1, ease: "easeInOut" },
+    },
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { delay: 0.5, duration: 1, ease: "easeOut" },
+    },
+  };
+
   return (
-    <section className="w-full mt-14 lg:mt-0 flex flex-col gap-10 lg:gap-0 lg:flex-row justify-between items-center lg:h-[85vh] border-b-[0.2px] border-gray-600">
-      <div className="w-full md:w-fit flex z-20 flex-col gap-5 justify-center md:justify-normal items-center md:items-start md:text-start lg:ml-[100px] xl:ml-[128px] mt-[5%]">
+    <motion.section
+      className="w-full mt-14 lg:mt-0 flex flex-col gap-10 lg:gap-0 lg:flex-row justify-between items-center lg:h-[85vh] border-b-[0.2px] border-gray-600"
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants} // Apply the containerVariants animation
+    >
+       <motion.div
+        className="w-full md:w-fit flex z-20 flex-col gap-5 justify-center md:justify-normal items-center md:items-start md:text-start lg:ml-[100px] xl:ml-[128px] mt-[5%]"
+        variants={textVariants} // Apply the textVariants animation
+      >
         <h1 className="hidden text-[32px] w-[300px] sm:text-[60px] md:mx-auto lg:mx-0 lg:text-[70px] xl:text-[80px] font-black text-white text-center lg:text-left sm:w-[500px] lg:w-[600px] xl:w-[722px] lg:flex items-end lg:leading-[90px] xl:leading-[95px]">
           getlinked Tech Hackathon{" "}
           <span className="absolute lg:ml-[26rem] xl:ml-[30rem] text-[#D434FE] lg:flex items-center">
@@ -71,24 +98,24 @@ const HeroSection = () => {
           alt="countdown"
           className="mt-10 md:mx-auto lg:mx-0 md:w-[290px] w-[220px] lg:w-[200px] xl:w-[291px] pointer-events-none select-none"
         />
-      </div>
+      </motion.div>
       <div className="z-20 mt-auto">
         <Image
-          src="/assets/Images/hero-graphics.png"
+          src="/assets/Images/hero-graphics.svg"
           width={781}
           height={641}
           alt="hero-graphics"
           className="absolute lg:w-[33%] md:w-[50%]  w-[338px] md:mt-28 lg:mt-[3em] right-0 md:mr-[12rem] lg:mr-5 pointer-events-none select-none"
         />
         <Image
-          src="/assets/Images/hero.png"
+          src="/assets/Images/hero.svg"
           width={715}
           height={905}
           alt="hero"
           className="md:mt-10  lg:mt-0 w-[419px] sm:w-[715px]  lg:w-[590px] xl:min-w-auto pointer-events-none select-none"
         />
       </div>
-    </section>
+    </motion.section>
   );
 };
 

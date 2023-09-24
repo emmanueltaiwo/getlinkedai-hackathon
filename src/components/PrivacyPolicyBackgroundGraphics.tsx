@@ -41,7 +41,7 @@ export const PrivacyPolicyBackgroundGraphics = () => {
         />
         <Image
           src="/assets/Images/gray-star.png"
-          className="absolute w-[10px] md:w-[26px] ml-[20rem] mt-[90rem] md:mt-[55%] md:ml-[93%]"
+          className="absolute w-[10px] md:w-[26px] ml-[16rem] mt-[90rem] md:mt-[55%] md:ml-[93%]"
           width={26}
           height={32}
           alt="pink-star"

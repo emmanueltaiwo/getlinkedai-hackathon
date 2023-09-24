@@ -8,7 +8,7 @@ const MobileHeader = () => {
   return (
     <div className="md:hidden flex">
       <Image
-        src="/assets/Images/mobile-menu.png"
+        src="/assets/Images/hamburger.svg"
         width={100}
         height={100}
         alt="Mobile menu"
@@ -20,7 +20,7 @@ const MobileHeader = () => {
         <div className="w-full duration-1000 transition-all top-0 left-0 bottom-0 right-0 h-screen fixed bg-[#150E28] text-white z-50 flex flex-col gap-5 ">
           <section className="mt-12 ml-auto">
             <Image
-              src="/assets/Images/close-border.png"
+              src="/assets/Images/close-border.svg"
               width={30}
               height={30}
               alt="close icon"
@@ -28,7 +28,7 @@ const MobileHeader = () => {
               onClick={() => setMenuIsOpen(false)}
             />
             <Image
-              src="/assets/Images/close.png"
+              src="/assets/Images/close.svg"
               width={13}
               height={30}
               alt="close icon"

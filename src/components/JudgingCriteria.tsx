@@ -39,11 +39,11 @@ const JudgingCriteria = () => {
         width={134}
         height={134}
         alt="ellipse1"
-        className="absolute hidden xl:inline left-[170px] top-[2040px] pointer-events-none select-none"
+        className="absolute hidden xl:inline left-0 ml-[12%] top-[2040px] pointer-events-none select-none"
       />
       <div className="xl:ml-[66px] lg:ml-[33px] z-20">
         <Image
-          src="/assets/Images/judging-hero.png"
+          src="/assets/Images/judging-hero.svg"
           width={710}
           height={587}
           alt="judging-hero"
