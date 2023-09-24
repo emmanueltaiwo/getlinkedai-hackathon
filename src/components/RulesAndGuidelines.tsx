@@ -95,7 +95,7 @@ const RulesAndGuidelines = () => {
       </motion.div>
       <div className="xl:mr-[38px] lg:mr-[19px] z-20 mx-auto">
         <Image
-          src="/assets/Images/rules-hero.svg"
+          src="/assets/Images/rules-hero.png"
           width={640}
           height={664}
           alt="rules-hero"

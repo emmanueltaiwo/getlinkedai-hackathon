@@ -7,13 +7,13 @@ import { useRouter } from "next/router";
 const RegistrationForm = () => {
   const [categories, setCategories] = useState([]);
   const [formData, setFormData] = useState({
-email: "",
-        phone_number: "",
-        category: "",
-        group_size: "",
-        team_name: "",
-        project_topic: "",
-        privacy_poclicy_accepted:true,    
+    email: "",
+    phone_number: "",
+    category: "",
+    group_size: "",
+    team_name: "",
+    project_topic: "",
+    privacy_poclicy_accepted: true,
   });
   const [showModal, setShowModal] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -52,41 +52,41 @@ email: "",
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-setIsLoading(true)
+    setIsLoading(true);
+    setErrorMessage("")
 
+    const fetchData = await fetch(
+      "https://backend.getlinked.ai/hackathon/registration",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
+    const response = await fetchData.json();
 
-const fetchData = await fetch('https://backend.getlinked.ai/hackathon/registration', {
-                   method: "POST",
-                headers:{
-                    "content-type":"application/json"
-                },
-                body:JSON.stringify(formData)
-            })
-            const response = await fetchData.json()
+    console.log(response);
 
-        console.log(response);
-
-        if (response.id) {
-setIsLoading(false);
-        setShowModal(true);
-        setFormData({
-          email: "",
-          phone_number: "",
-          team_name: "",
-          group_size: "",
-          project_topic: "",
-          category: "",
-          privacy_poclicy_accepted: false,
-        });
-        setIsSuccess(true);
-         
-   
-        } else {
-          setIsLoading(false);
-        setErrorMessage("Registration Failed, Try again");
-        setIsSuccess(false);
-        }
-    
+    if (response.id) {
+      setIsLoading(false);
+      setShowModal(true);
+      setFormData({
+        email: "",
+        phone_number: "",
+        team_name: "",
+        group_size: "",
+        project_topic: "",
+        category: "",
+        privacy_poclicy_accepted: false,
+      });
+      setIsSuccess(true);
+    } else {
+      setIsLoading(false);
+      setErrorMessage("Registration Failed, Try again");
+      setIsSuccess(false);
+    }
   };
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
@@ -171,21 +171,21 @@ setIsLoading(false);
         {/* Category */}
         <div className="flex flex-col gap-2">
           <label className="text-white text-[14px]">Category</label>
-<select
-  name="category"
-  value={formData.category}
-  onChange={handleChange}
-  id="selectCategory"
-  required
-  className="w-[180px] md:w-full sm:w-[300px] lg:w-[215px] xl:w-[263px] h-[47px] bg-transparent border-2 border-white rounded-[4px] px-4 text-white text-[14px] placeholder:text-gray-600 outline-none"
->
-  <option value="">Select your category</option>
-  {categories.map((category: any) => (
-    <option key={category.id} value={category.id}>
-      {category.name}
-    </option>
-  ))}
-</select>
+          <select
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            id="selectCategory"
+            required
+            className="w-[180px] md:w-full sm:w-[300px] lg:w-[215px] xl:w-[263px] h-[47px] bg-transparent border-2 border-white rounded-[4px] px-4 text-white text-[14px] placeholder:text-gray-600 outline-none"
+          >
+            <option value="">Select your category</option>
+            {categories.map((category: any) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* Group Size */}
@@ -231,20 +231,16 @@ setIsLoading(false);
       </div>
 
       <button
-        className="text-white w-[172px] mx-auto h-fit rounded-[4px] sm:w-full px-16 py-3"
+        className="text-white w-[172px] mx-auto h-fit text-center rounded-[4px] sm:w-full px-16 py-3"
         style={{
           background: "linear-gradient(to right, #FE34B9, #D434FE, #903AFF)",
         }}
         type="submit"
         disabled={isLoading}
       >
-        Submit
+        {isLoading ? "Submitting" : "Submit"}
       </button>
-      {isLoading && (
-        <p className="text-white text-[15px] font-medium text-center pb-1">
-          Loading
-        </p>
-      )}
+
       {!isSuccess && (
         <p className="text-red-600 text-[15px] font-bold text-center pb-2">
           {errorMessage}

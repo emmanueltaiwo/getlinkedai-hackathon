@@ -108,7 +108,7 @@ const HeroSection = () => {
           className="absolute lg:w-[33%] md:w-[50%]  w-[338px] md:mt-28 lg:mt-[3em] right-0 md:mr-[12rem] lg:mr-5 pointer-events-none select-none"
         />
         <Image
-          src="/assets/Images/hero.svg"
+          src="/assets/Images/hero.png"
           width={715}
           height={905}
           alt="hero"

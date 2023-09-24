@@ -90,7 +90,7 @@ const PrizesAndRewards = () => {
         </p>
         <div className="md:ml-[106px] mt-5 md:mt-0 md:w-[548px] opacity-100">
           <Image
-            src="/assets/Images/trophy.svg"
+            src="/assets/Images/trophy.png"
             width={548}
             height={482}
             alt="trophy image"

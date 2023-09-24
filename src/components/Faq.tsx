@@ -124,7 +124,7 @@ const Faq = () => {
         </div>
 
         <Image
-          src="/assets/Images/faq-hero.svg"
+          src="/assets/Images/faq-hero.png"
           width={600}
           height={741}
           alt="faq-hero"

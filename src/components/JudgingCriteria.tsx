@@ -81,7 +81,7 @@ const JudgingCriteria = () => {
       />
       <div className="xl:ml-[66px] lg:ml-[33px] z-20">
         <Image
-          src="/assets/Images/judging-hero.svg"
+          src="/assets/Images/judging-hero.png"
           width={710}
           height={587}
           alt="judging-hero"
