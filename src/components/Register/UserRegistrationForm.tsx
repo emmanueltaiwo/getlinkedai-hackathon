@@ -10,7 +10,7 @@ const RegistrationForm = () => {
 email: "",
         phone_number: "",
         category: "",
-        group_size: "",
+        group_size: "1",
         team_name: "",
         project_topic: "",
         privacy_poclicy_accepted:true,    
