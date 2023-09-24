@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const Introduction = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true, 
+    threshold: 0.2, 
+  });
+
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+     
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
   const containerVariants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: {
@@ -23,8 +38,9 @@ const Introduction = () => {
   return (
     <motion.section
       initial="hidden"
-      animate="visible"
+      animate={controls}
       variants={containerVariants}
+      ref={ref} 
       id="overview"
       className="w-full flex flex-col lg:flex-row mt-7 md:mt-0 justify-between items-center h-full py-10 lg:h-[75vh] border-b-[0.2px] border-gray-600 gap-8"
     >

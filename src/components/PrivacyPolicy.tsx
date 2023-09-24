@@ -1,14 +1,52 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { PrivacyPolicyBackgroundGraphics } from "./PrivacyPolicyBackgroundGraphics";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const PrivacyPolicy = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
+  const containerVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { delay: 0.2, duration: 1, ease: "easeInOut" },
+    },
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { delay: 0.5, duration: 1, ease: "easeOut" },
+    },
+  };
   return (
     <>
       <PrivacyPolicyBackgroundGraphics />
 
-      <section className="w-full flex flex-col lg:flex-row justify-between gap-5 items-center h-full py-20 md:py-32 border-b-[0.2px] border-gray-600">
+      <motion.section
+        initial="hidden"
+        animate={controls}
+        variants={containerVariants}
+        ref={ref}
+        className="w-full flex flex-col lg:flex-row justify-between gap-5 items-center h-full py-20 md:py-32 border-b-[0.2px] border-gray-600"
+      >
         <div className="mg:ml-[25px] xl:ml-[50px] flex flex-col gap-3 sm:gap-5">
           <h1 className="lg:ml-14 xl:ml-28 text-[20px] w-[60%] md:w-full mx-auto lg:mx-0 sm:text-[32px] lg:w-[330px] text-center lg:text-left font-[700] text-white">
             Privacy Policy and <span className="text-[#D434FE]">Terms</span>
@@ -77,7 +115,10 @@ const PrivacyPolicy = () => {
           </div>
         </div>
 
-        <div className="xl:w-[559px] flex items-center  mt-32 md:h-[749px] mr-[90px]">
+        <motion.div
+          variants={textVariants}
+          className="xl:w-[559px] flex items-center  mt-32 md:h-[749px] mr-[90px]"
+        >
           <Image
             src="/assets/Images/secure.png"
             width={530}
@@ -92,8 +133,8 @@ const PrivacyPolicy = () => {
             alt="privacy image"
             className=" pointer-events-none z-30 ml-10 md:ml-0 w-[262px] sm:w-[559px] select-none"
           />
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
     </>
   );
 };

@@ -27,11 +27,11 @@ const HeroSection = () => {
       className="w-full mt-14 lg:mt-0 flex flex-col gap-10 lg:gap-0 lg:flex-row justify-between items-center lg:h-[85vh] border-b-[0.2px] border-gray-600"
       initial="hidden"
       animate="visible"
-      variants={containerVariants} // Apply the containerVariants animation
+      variants={containerVariants} 
     >
        <motion.div
         className="w-full md:w-fit flex z-20 flex-col gap-5 justify-center md:justify-normal items-center md:items-start md:text-start lg:ml-[100px] xl:ml-[128px] mt-[5%]"
-        variants={textVariants} // Apply the textVariants animation
+        variants={textVariants} 
       >
         <h1 className="hidden text-[32px] w-[300px] sm:text-[60px] md:mx-auto lg:mx-0 lg:text-[70px] xl:text-[80px] font-black text-white text-center lg:text-left sm:w-[500px] lg:w-[600px] xl:w-[722px] lg:flex items-end lg:leading-[90px] xl:leading-[95px]">
           getlinked Tech Hackathon{" "}

@@ -1,11 +1,49 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { judgingCriteriaData } from "@/db/judging-criteria-data";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const JudgingCriteria = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
+  const containerVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { delay: 0.2, duration: 1, ease: "easeInOut" },
+    },
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { delay: 0.5, duration: 1, ease: "easeOut" },
+    },
+  };
   return (
-    <section className="w-full flex flex-col lg:flex-row justify-between items-center h-full py-10 xl:h-screen border-b-[0.2px] border-gray-600">
+    <motion.section
+      initial="hidden"
+      animate={controls}
+      variants={containerVariants}
+      ref={ref}
+      className="w-full flex flex-col lg:flex-row justify-between items-center h-full py-10 xl:h-screen border-b-[0.2px] border-gray-600"
+    >
       <Image
         src="/assets/Images/purple-grad-3.png"
         width={837}
@@ -50,7 +88,10 @@ const JudgingCriteria = () => {
           className="pointer-events-none w-[332px] md:w-[600px] lg:w-[500px] xl:w-[710px] select-none"
         />
       </div>
-      <div className="flex mx-auto flex-col z-20 gap-5 lg:mr-[100px]">
+      <motion.div
+        variants={textVariants}
+        className="flex mx-auto flex-col z-20 gap-5 lg:mr-[100px]"
+      >
         <h1 className="text-[20px] w-[180px] sm:w-[80%] mx-auto lg:mx-0 md:text-[32px] text-center lg:text-left md:w-full lg:w-[280px] font-bold text-white">
           Judging Criteria{" "}
           <span className="text-[#D434FE]">Key attributes</span>{" "}
@@ -77,8 +118,8 @@ const JudgingCriteria = () => {
             Read More
           </Link>
         </ul>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 };
 

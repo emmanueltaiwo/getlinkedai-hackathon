@@ -1,9 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { faqData } from "@/db/faq-data";
 import { FaqBackgroundGraphics } from "./FaqBackgroundGraphics";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const Faq = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
+  const containerVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { delay: 0.2, duration: 1, ease: "easeInOut" },
+    },
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { delay: 0.5, duration: 1, ease: "easeOut" },
+    },
+  };
+
   const [faqIsOpen, setFaqIsOpen] = useState(false);
   const [faqContent, setFaqContent] = useState("");
   const [selectedId, setSelectedId] = useState(0);
@@ -16,13 +49,20 @@ const Faq = () => {
     setFaqContent(getFaqContent);
   };
   return (
-    <section
+    <motion.section
+      initial="hidden"
+      animate={controls}
+      variants={containerVariants}
+      ref={ref}
       id="faq"
       className="w-full flex flex-col lg:flex-row gap-8 justify-between items-center h-full py-10 border-b-[0.2px] border-gray-600"
     >
       <FaqBackgroundGraphics />
 
-      <div className="flex w-screen lg:w-fit flex-col gap-5 lg:ml-[100px] xl:ml-[215px]">
+      <motion.div
+        variants={textVariants}
+        className="flex w-screen lg:w-fit flex-col gap-5 lg:ml-[100px] xl:ml-[215px]"
+      >
         <h1 className="text-[20px] md:text-[32px] w-[60%] text-center mx-auto md:w-full lg:text-left lg:mx-0 lg:w-[280px] font-bold text-white">
           Frequently Ask <span className="text-[#D434FE]">Question</span>{" "}
         </h1>
@@ -57,7 +97,7 @@ const Faq = () => {
             </li>
           ))}
         </ul>
-      </div>
+      </motion.div>
       <div className="lg:mr-[50px] flex items-center flex-col mt-20 xl:mr-[100px] z-20 lg:mt-24">
         <div className="flex lg:gap-20 gap-10">
           <Image
@@ -91,7 +131,7 @@ const Faq = () => {
           className="pointer-events-none w-[327px] md:w-[500px] lg:w-[600px] select-none"
         />
       </div>
-    </section>
+    </motion.section>
   );
 };
 

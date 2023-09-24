@@ -1,9 +1,47 @@
-import React from 'react'
-import Image from 'next/image';
+import React, { useEffect } from "react";
+import Image from "next/image";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const RulesAndGuidelines = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
+  const containerVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { delay: 0.2, duration: 1, ease: "easeInOut" },
+    },
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { delay: 0.5, duration: 1, ease: "easeOut" },
+    },
+  };
   return (
-    <section className="w-full flex flex-col-reverse lg:flex-row justify-between items-center h-full py-10 lg:h-[75vh] border-b-[0.2px] border-gray-600">
+    <motion.section
+      initial="hidden"
+      animate={controls}
+      variants={containerVariants}
+      ref={ref}
+      className="w-full flex flex-col-reverse lg:flex-row justify-between items-center h-full py-10 lg:h-[75vh] border-b-[0.2px] border-gray-600"
+    >
       <Image
         src="/assets/Images/purple-grad-2.png"
         width={1037}
@@ -39,19 +77,22 @@ const RulesAndGuidelines = () => {
         alt="bright-star"
         className="absolute md:hidden xl:left-[750px] mt-auto mb-[-10px] w-[10px] sm:w-[26px] left-[150px] sm:mb-[350px] sm:left-[100px] lg:left-[600px] md:left-[700px] md:mb-[200px] xl:top-[1770px] pointer-events-none select-none"
       />
-      <div className="flex z-20 flex-col mt-3 md:mt-0 gap-2 md:gap-5 lg:ml-[90px] xl:ml-[181px]">
+      <motion.div
+        variants={textVariants}
+        className="flex z-20 flex-col mt-3 md:mt-0 gap-2 md:gap-5 lg:ml-[90px] xl:ml-[181px]"
+      >
         <h1 className="text-[20px] md:text-[32px] text-center mx-auto lg:text-left lg:mx-0 w-[50%] md:w-full lg:w-[170px] font-bold text-white">
           Rules and <span className="text-[#D434FE]">Guidelines</span>{" "}
         </h1>
         <p className="text-[13px] md:text-[14px] text-center mx-auto lg:text-left lg:mx-0 leading-[27.5px] md:w-[80%] text-white w-[80%] lg:w-[527px]">
           Our tech hackathon is a melting pot of visionaries, and its purpose is
-          as clear as day: to shape the future. Whether you&apos;re a coding genius,
-          a design maverick, or a concept wizard, you&apos;ll have the chance to
-          transform your ideas into reality. Solving real-world problems,
-          pushing the boundaries of technology, and creating solutions that can
-          change the world, that&apos;s what we&apos;re all about!
+          as clear as day: to shape the future. Whether you&apos;re a coding
+          genius, a design maverick, or a concept wizard, you&apos;ll have the
+          chance to transform your ideas into reality. Solving real-world
+          problems, pushing the boundaries of technology, and creating solutions
+          that can change the world, that&apos;s what we&apos;re all about!
         </p>
-      </div>
+      </motion.div>
       <div className="xl:mr-[38px] lg:mr-[19px] z-20 mx-auto">
         <Image
           src="/assets/Images/rules-hero.svg"
@@ -61,8 +102,8 @@ const RulesAndGuidelines = () => {
           className="pointer-events-none mx-auto w-[294px] md:w-[640px] select-none"
         />
       </div>
-    </section>
+    </motion.section>
   );
-}
+};
 
-export default RulesAndGuidelines
+export default RulesAndGuidelines;

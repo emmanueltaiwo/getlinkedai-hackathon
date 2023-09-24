@@ -1,9 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { TimeLineData } from "@/db/timeline-data";
 import TimelineCard from "./TimelineCard";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const Timeline = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
+  const containerVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { delay: 0.2, duration: 1, ease: "easeInOut" },
+    },
+  };
+
   return (
     <>
       <Image
@@ -60,7 +84,11 @@ const Timeline = () => {
         </div>
       </div>
 
-      <section
+      <motion.section
+        initial="hidden"
+        animate={controls}
+        variants={containerVariants}
+        ref={ref}
         id="timeline"
         className="w-full h-full pb-32 pt-20 flex flex-col text-center justify-center items-center gap-10"
       >
@@ -73,9 +101,9 @@ const Timeline = () => {
         </div>
 
         <div className="mt-5 lg:mt-[10rem] mx-auto lg:mx-0 md:ml-0 w-[80%] lg:w-[1000px] xl:w-[1100px] px-3 flex flex-col items-center justify-center gap-10 md:gap-20">
-          <TimelineCard/>
+          <TimelineCard />
         </div>
-      </section>
+      </motion.section>
     </>
   );
 };

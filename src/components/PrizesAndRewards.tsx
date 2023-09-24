@@ -1,7 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const PrizesAndRewards = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
+  const containerVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { delay: 0.2, duration: 1, ease: "easeInOut" },
+    },
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { delay: 0.5, duration: 1, ease: "easeOut" },
+    },
+  };
   return (
     <>
       <Image
@@ -40,7 +72,11 @@ const PrizesAndRewards = () => {
         className="absolute hidden md:inline lg:left-[320px] w-[10px] md:w-[20px] md:left-[500px] md:mt-[1250px] lg:m-0 lg:top-[5700px] pointer-events-none select-none"
       />
 
-      <section
+      <motion.section
+        initial="hidden"
+        animate={controls}
+        variants={containerVariants}
+        ref={ref}
         className="w-full flex flex-col lg:flex-row justify-between gap-3 md:gap-10 items-center h-full pt-14 pb-24"
         style={{
           backgroundImage: "url(/assets/Images/prizes-bg.png)",
@@ -61,7 +97,10 @@ const PrizesAndRewards = () => {
             className="pointer-events-none w-[321px] md:w-[548px] mx-auto md:mx-0 select-none"
           />
         </div>
-        <div className="flex flex-col gap-5 lg:w-[650px] lg:mr-[90px]">
+        <motion.div
+          variants={textVariants}
+          className="flex flex-col gap-5 lg:w-[650px] lg:mr-[90px]"
+        >
           <h1 className="hidden md:inline ml-28 text-[32px] w-[174px] md:w-full lg:w-[174px] md:text-center lg:text-start md:mx-auto lg:mx-0 font-[700] text-white">
             Prizes and <span className="text-[#D434FE]">Rewards</span>
           </h1>
@@ -76,8 +115,8 @@ const PrizesAndRewards = () => {
             alt="rewards image"
             className="pointer-events-none mt-5 md:mt-0 w-[294px] md:w-[692px] select-none"
           />
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
     </>
   );
 };

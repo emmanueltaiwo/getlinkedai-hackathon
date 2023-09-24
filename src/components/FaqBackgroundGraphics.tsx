@@ -45,7 +45,7 @@ export const FaqBackgroundGraphics = () => {
         width={30}
         height={36}
         alt="bright-star"
-        className="absolute xl:left-[1180px] w-[10px] xl:m-0 md:mt-[1270px] mt-[1220px] sm:mt-[1080px] lg:mx-0 ml-[200px] md:ml-[300px] md:w-[30px] lg:right-0 lg:mr-[100px] lg:mt-[700px] xl:top-[3450px] pointer-events-none select-none"
+        className="hidden lg:inline absolute xl:left-[1180px] w-[10px] xl:m-0 md:mt-[1270px] mt-[1220px] sm:mt-[1080px] lg:mx-0 ml-[200px] md:ml-[300px] md:w-[30px] lg:right-0 lg:mr-[100px] lg:mt-[700px] xl:top-[3450px] pointer-events-none select-none"
       />
     </>
   );
