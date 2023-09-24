@@ -52,6 +52,7 @@ email: "",
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
+setIsLoading(true)
 
 
 const fetchData = await fetch('https://backend.getlinked.ai/hackathon/registration', {
