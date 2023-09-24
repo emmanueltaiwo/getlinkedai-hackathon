@@ -170,21 +170,21 @@ setIsLoading(false);
         {/* Category */}
         <div className="flex flex-col gap-2">
           <label className="text-white text-[14px]">Category</label>
-          <select
-            name="category"
-            value={formData.category}
-            onChange={handleChange}
-            id="selectCategory"
-            required
-            className="w-[180px] md:w-full sm:w-[300px] lg:w-[215px] xl:w-[263px] h-[47px] bg-transparent border-2 border-white rounded-[4px] px-4 text-white text-[14px] placeholder:text-gray-600 outline-none"
-          >
-            <option value="select">Select your category</option>
-            {categories.map((category: any) => (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            ))}
-          </select>
+<select
+  name="category"
+  value={formData.category}
+  onChange={handleChange}
+  id="selectCategory"
+  required
+  className="w-[180px] md:w-full sm:w-[300px] lg:w-[215px] xl:w-[263px] h-[47px] bg-transparent border-2 border-white rounded-[4px] px-4 text-white text-[14px] placeholder:text-gray-600 outline-none"
+>
+  <option value="select">Select your category</option>
+  {categories.map((category) => (
+    <option key={category.id} value={category.id}>
+      {category.name}
+    </option>
+  ))}
+</select>
         </div>
 
         {/* Group Size */}
