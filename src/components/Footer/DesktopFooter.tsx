@@ -9,10 +9,10 @@ const DesktopFooter = () => {
       <section className="xl:w-[1086px] lg:w-[850px] md:w-[700px] min-h-[201px] mx-auto text-white flex justify-between">
         <div className="flex h-[201px] flex-col gap-5">
           <Image
-            src="/assets/Images/getlinked.png"
+            src="/assets/Images/getlinked.svg"
             width={143}
             height={37}
-            alt="getlinked logo pointer-events-none select-none"
+            alt="getlinked logo"
           />
           <p className="xl:w-[408px] lg:w-[300px] md:w-[230px] h-[63ox] text-[12px]">
             Getlinked Tech Hackathon is a technology innovation program

@@ -9,10 +9,10 @@ const MobileFooter = () => {
       <section className="w-full mx-auto text-white flex flex-col gap-10 items-center">
         <div className="flex w-[271px] sm:w-[500px] flex-col gap-5">
           <Image
-            src="/assets/Images/getlinked.png"
+            src="/assets/Images/getlinked.svg"
             width={143}
             height={37}
-            alt="getlinked logo pointer-events-none select-none"
+            alt="getlinked logo"
           />
           <p className="w-[271px] sm:w-[500px] h-[63ox] text-[12px]">
             Getlinked Tech Hackathon is a technology innovation program
