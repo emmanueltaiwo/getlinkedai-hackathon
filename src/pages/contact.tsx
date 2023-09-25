@@ -23,7 +23,7 @@ const Contact = () => {
           className="inline md:hidden mt-12 mr-auto"
         >
           <Image
-            src="/assets/Images/close-border.png"
+            src="/assets/Images/close-border.svg"
             width={30}
             height={30}
             alt="close border"
